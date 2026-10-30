@@ -39,3 +39,24 @@ audio.addEventListener('timeupdate',update);audio.addEventListener('loadedmetada
   reduced.addEventListener('change',schedule);
   if(video.readyState>=1){duration=video.duration;schedule()}
 })();
+
+
+
+(() => {
+  const section = document.querySelector('.section-three');
+  const indicator = document.getElementById('scroll-indicator');
+
+  if (!section || !indicator) return;
+
+  function updateIndicator() {
+    const rect = section.getBoundingClientRect();
+    const distance = Math.max(1, rect.height - window.innerHeight);
+    const progress = Math.max(0, -rect.top / distance);
+
+    indicator.style.opacity = Math.max(0, 1 - progress * 8);
+  }
+
+  window.addEventListener('scroll', updateIndicator, { passive: true });
+  window.addEventListener('resize', updateIndicator);
+  updateIndicator();
+})();
