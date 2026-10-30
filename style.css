@@ -53,3 +53,39 @@
 .section-three-sticky::before,.section-three-heading::after{display:none}
 @media(min-width:700px){.message{margin-top:-135px}}
 @media(max-width:420px){.message{margin-top:-115px;margin-bottom:-90px;min-height:290px;padding-top:72px;padding-bottom:75px}}
+
+
+
+.scroll-indicator {
+  position: absolute;
+  z-index: 10;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font: 12px Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px #000;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+
+.scroll-arrow {
+  font-size: 27px;
+  animation: arrow-down 1.6s ease-in-out infinite;
+}
+
+@keyframes arrow-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(9px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-arrow { animation: none; }
+}
